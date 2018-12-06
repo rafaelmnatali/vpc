@@ -8,6 +8,6 @@ Templates for VPC management
 Template requests input for: Availability Zone, CIDRs, and Database Port Number.
 
 NACLs and Security Groups don't allow ephemeral ports. 
-Ports allowed: 80, 443 (Public); 22,389,80,443 (Private), <parameter> (Database)
+Ports allowed: 80, 443 (Public); 22,389,80,443 (Private), (Database as inputed in the parameter)
 
 

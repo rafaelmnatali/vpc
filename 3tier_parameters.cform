@@ -17,7 +17,8 @@
                         "PublicSubnet1",
                         "PublicSubnet2",
                         "DBSubnetGroup1",
-                        "DBSubnetGroup2"                        
+                        "DBSubnetGroup2",
+                        "DBPort"                        
                     ]
                 }
             ],
@@ -45,6 +46,9 @@
                 },
                 "DBSubnetGroup2":{
                     "default": "Database Subnet 2 CIDR"
+                },
+                "DBPort":{
+                    "default": "Database port number"
                 },                     
             }
         }
@@ -59,6 +63,10 @@
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
             "Default": "10.0.0.0/19",
             "Description": "CIDR block for private subnet 1 located in Availability Zone 1.",
+            "Type": "String"
+        },
+        "DBPortNumber": {
+            "Description": "Database instance port number",
             "Type": "String"
         },
         "PrivateSubnet2CIDR": {
@@ -269,7 +277,7 @@
         "NetworkAclId" : { "Ref" : "DBSubnetNACL"},
         "RuleNumber" : "100",
         "Protocol" : "6",
-        "PortRange" : { "From" : "3306", "To" : "3306" },
+        "PortRange" : { "From" : {"Ref":"DBPortNumber"}, "To" : {"Ref":"DBPortNumber"} },
         "Egress" : "false",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "PrivateSubnet1CIDR"}
@@ -282,7 +290,7 @@
         "NetworkAclId" : { "Ref" : "DBSubnetNACL"},
         "RuleNumber" : "100",
         "Protocol" : "6",
-        "PortRange" : { "From" : "3306", "To" : "3306" },
+        "PortRange" : { "From" : {"Ref":"DBPortNumber"}, "To" : {"Ref":"DBPortNumber"} },
         "Egress" : "true",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "PrivateSubnet1CIDR"}
@@ -295,7 +303,7 @@
         "NetworkAclId" : { "Ref" : "DBSubnetNACL"},
         "RuleNumber" : "200",
         "Protocol" : "6",
-        "PortRange" : { "From" : "3306", "To" : "3306" },
+        "PortRange" : { "From" : {"Ref":"DBPortNumber"}, "To" : {"Ref":"DBPortNumber"} },
         "Egress" : "false",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "PrivateSubnet2CIDR"}
@@ -308,7 +316,7 @@
         "NetworkAclId" : { "Ref" : "DBSubnetNACL"},
         "RuleNumber" : "200",
         "Protocol" : "6",
-        "PortRange" : { "From" : "3306", "To" : "3306" },
+        "PortRange" : { "From" : {"Ref":"DBPortNumber"}, "To" : {"Ref":"DBPortNumber"} },
         "Egress" : "true",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "PrivateSubnet2CIDR"}
@@ -345,7 +353,7 @@
         "NetworkAclId" : { "Ref" : "PrivateSubnetNACL"},
         "RuleNumber" : "100",
         "Protocol" : "6",
-        "PortRange" : { "From" : "3306", "To" : "3306" },
+        "PortRange" : { "From" : {"Ref":"DBPortNumber"}, "To" : {"Ref":"DBPortNumber"} },
         "Egress" : "false",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "DBSubnet1CIDR"}
@@ -358,7 +366,7 @@
         "NetworkAclId" : { "Ref" : "PrivateSubnetNACL"},
         "RuleNumber" : "100",
         "Protocol" : "6",
-        "PortRange" : { "From" : "3306", "To" : "3306" },
+        "PortRange" : { "From" : {"Ref":"DBPortNumber"}, "To" : {"Ref":"DBPortNumber"} },
         "Egress" : "true",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "DBSubnet1CIDR"}
@@ -371,7 +379,7 @@
         "NetworkAclId" : { "Ref" : "PrivateSubnetNACL"},
         "RuleNumber" : "200",
         "Protocol" : "6",
-        "PortRange" : { "From" : "3306", "To" : "3306" },
+        "PortRange" : { "From" : {"Ref":"DBPortNumber"}, "To" : {"Ref":"DBPortNumber"} },
         "Egress" : "false",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "DBSubnet2CIDR"}
@@ -384,7 +392,7 @@
         "NetworkAclId" : { "Ref" : "PrivateSubnetNACL"},
         "RuleNumber" : "200",
         "Protocol" : "6",
-        "PortRange" : { "From" : "3306", "To" : "3306" },
+        "PortRange" : { "From" : {"Ref":"DBPortNumber"}, "To" : {"Ref":"DBPortNumber"} },
         "Egress" : "true",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "DBSubnet2CIDR"}
@@ -683,28 +691,28 @@
             "SecurityGroupIngress": [
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "PrivateSubnet1CIDR" }
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "PrivateSubnet2CIDR" }
                 }                
             ],
             "SecurityGroupEgress": [
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "PrivateSubnet1CIDR" }
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "PrivateSubnet2CIDR" }
                 }                
             ],            
@@ -763,15 +771,15 @@
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet1CIDR" },
                     "Description": "Database access from DB Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet2CIDR" },
                     "Description": "Database access from DB Subnet 2"
                 },
@@ -822,15 +830,15 @@
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet1CIDR" },
                     "Description": "Database access to DB Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet2CIDR" },
                     "Description": "Database access to DB Subnet 2"
                 },    
@@ -890,15 +898,15 @@
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet1CIDR" },
                     "Description": "Database access from DB Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet2CIDR" },
                     "Description": "Database access from DB Subnet 2"
                 },
@@ -949,15 +957,15 @@
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet1CIDR" },
                     "Description": "Database access to DB Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "3306",
-                    "ToPort": "3306",
+                    "FromPort": {"Ref":"DBPortNumber"},
+                    "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet2CIDR" },
                     "Description": "Database access to DB Subnet 2"
                 },    

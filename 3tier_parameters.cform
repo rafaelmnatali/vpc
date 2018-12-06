@@ -112,6 +112,42 @@
             "Type": "String"
         }
     },
+
+    "Outputs": {
+        "VpcId": {
+            "Value": { "Ref": "VPC" },
+            "Description": "VPC Id created by the stack"
+        },
+        "PrivateSubnet1AZ": {
+            "Value": { "Fn::GetAtt" : [ "PrivateSubnet1", "AvailabilityZone"]},
+            "Description": "Availability Zone where the subnet was created"
+        },
+        "PrivateSubnet2AZ": {
+            "Value": { "Fn::GetAtt" : [ "PrivateSubnet2", "AvailabilityZone"]},
+            "Description": "Availability Zone where the subnet was created"
+        },
+        "PublicSubnet1AZ": {
+            "Value": { "Fn::GetAtt" : [ "PublicSubnet1", "AvailabilityZone"]},
+            "Description": "Availability Zone where the subnet was created"
+        },
+        "PublicSubnet2AZ": {
+            "Value": { "Fn::GetAtt" : [ "PublicSubnet2", "AvailabilityZone"]},
+            "Description": "Availability Zone where the subnet was created"
+        },
+        "DBSubnet1AZ": {
+            "Value": { "Fn::GetAtt" : [ "DBSubnet1", "AvailabilityZone"]},
+            "Description": "Availability Zone where the subnet was created"
+        },
+        "DBSubnet2AZ": {
+            "Value": { "Fn::GetAtt" : [ "DBSubnet2", "AvailabilityZone"]},
+            "Description": "Availability Zone where the subnet was created"
+        },
+        "IGWId": {
+            "Value": { "Ref": "IGW" },
+            "Description": "Internet Gateway Id created by the stack"
+        },
+    },
+
   "Resources": {
 
     "VPC": {
@@ -1017,5 +1053,5 @@
       "DependsOn" : "PublicSubnetNACL"  
     },
 
-  }                
+  }
 }   

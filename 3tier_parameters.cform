@@ -553,26 +553,26 @@
       }
     },
 
-    "PrivateSubnetNACLPublicSubnet1389" : { 
+    "PrivateSubnetNACLPublicSubnet13389" : { 
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties": {
         "NetworkAclId" : { "Ref" : "PrivateSubnetNACL"},
         "RuleNumber" : "500",
         "Protocol" : "6",
-        "PortRange" : { "From" : "389", "To" : "389" },
+        "PortRange" : { "From" : "3389", "To" : "3389" },
         "Egress" : "false",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "PublicSubnet1CIDR"}
       }
     },
 
-    "PrivateSubnetNACLPublicSubnet1389egress" : { 
+    "PrivateSubnetNACLPublicSubnet13389egress" : { 
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties": {
         "NetworkAclId" : { "Ref" : "PrivateSubnetNACL"},
         "RuleNumber" : "500",
         "Protocol" : "6",
-        "PortRange" : { "From" : "389", "To" : "389" },
+        "PortRange" : { "From" : "3389", "To" : "3389" },
         "Egress" : "true",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "PublicSubnet1CIDR"}
@@ -657,26 +657,26 @@
       }
     },
 
-    "PrivateSubnetNACLPublicSubnet2389" : { 
+    "PrivateSubnetNACLPublicSubnet23389" : { 
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties": {
         "NetworkAclId" : { "Ref" : "PrivateSubnetNACL"},
         "RuleNumber" : "900",
         "Protocol" : "6",
-        "PortRange" : { "From" : "389", "To" : "389" },
+        "PortRange" : { "From" : "3389", "To" : "3389" },
         "Egress" : "false",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "PublicSubnet2CIDR"}
       }
     },
 
-    "PrivateSubnetNACLPublicSubnet2389egress" : { 
+    "PrivateSubnetNACLPublicSubnet23389egress" : { 
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties": {
         "NetworkAclId" : { "Ref" : "PrivateSubnetNACL"},
         "RuleNumber" : "900",
         "Protocol" : "6",
-        "PortRange" : { "From" : "389", "To" : "389" },
+        "PortRange" : { "From" : "3389", "To" : "3389" },
         "Egress" : "true",
         "RuleAction" : "allow",
         "CidrBlock" : { "Ref" : "PublicSubnet2CIDR"}
@@ -1010,15 +1010,15 @@
             "SecurityGroupIngress": [
                 {
                     "IpProtocol": "6",
-                    "FromPort": "389",
-                    "ToPort": "389",
+                    "FromPort": "3389",
+                    "ToPort": "3389",
                     "CidrIp": { "Ref": "PrivateSubnet1CIDR" },
                     "Description": "Private access to RDP from Private Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
-                    "FromPort": "389",
-                    "ToPort": "389",
+                    "FromPort": "3389",
+                    "ToPort": "3389",
                     "CidrIp": { "Ref": "PrivateSubnet2CIDR" },
                     "Description": "Private access to RDP from Private Subnet 2"
                 },

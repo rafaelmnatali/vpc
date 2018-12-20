@@ -885,14 +885,14 @@
                     "IpProtocol": "6",
                     "FromPort": "22",
                     "ToPort": "22",
-                    "CidrIp": { "Ref": "PrivateSubnet1CIDR" },
+                    "CidrIp": { "Ref": "PublicSubnet1CIDR" },
                     "Description": "Private access to SSH from Private Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
                     "FromPort": "22",
                     "ToPort": "22",
-                    "CidrIp": { "Ref": "PrivateSubnet2CIDR" },
+                    "CidrIp": { "Ref": "PublicSubnet2CIDR" },
                     "Description": "Private access to SSH from Private Subnet 2"
                 },
                 {
@@ -944,14 +944,14 @@
                     "IpProtocol": "6",
                     "FromPort": "22",
                     "ToPort": "22",
-                    "CidrIp": { "Ref": "PrivateSubnet1CIDR" },
+                    "CidrIp": { "Ref": "PublicSubnet1CIDR" },
                     "Description": "Private access to SSH from Private Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
                     "FromPort": "22",
                     "ToPort": "22",
-                    "CidrIp": { "Ref": "PrivateSubnet2CIDR" },
+                    "CidrIp": { "Ref": "PublicSubnet2CIDR" },
                     "Description": "Private access to SSH from Private Subnet 2"
                 },
                 {
@@ -1012,14 +1012,14 @@
                     "IpProtocol": "6",
                     "FromPort": "3389",
                     "ToPort": "3389",
-                    "CidrIp": { "Ref": "PrivateSubnet1CIDR" },
+                    "CidrIp": { "Ref": "PublicSubnet1CIDR" },
                     "Description": "Private access to RDP from Private Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
                     "FromPort": "3389",
                     "ToPort": "3389",
-                    "CidrIp": { "Ref": "PrivateSubnet2CIDR" },
+                    "CidrIp": { "Ref": "PublicSubnet2CIDR" },
                     "Description": "Private access to RDP from Private Subnet 2"
                 },
                 {

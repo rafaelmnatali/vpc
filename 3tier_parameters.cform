@@ -847,13 +847,15 @@
                     "IpProtocol": "6",
                     "FromPort": {"Ref":"DBPortNumber"},
                     "ToPort": {"Ref":"DBPortNumber"},
-                    "CidrIp": { "Ref": "PrivateSubnet1CIDR" }
+                    "CidrIp": { "Ref": "PrivateSubnet1CIDR" },
+                    "Description": "Access to database from Private Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
                     "FromPort": {"Ref":"DBPortNumber"},
                     "ToPort": {"Ref":"DBPortNumber"},
-                    "CidrIp": { "Ref": "PrivateSubnet2CIDR" }
+                    "CidrIp": { "Ref": "PrivateSubnet2CIDR" },
+                    "Description": "Access to database from Private Subnet 2"
                 }                
             ],
             "SecurityGroupEgress": [
@@ -861,14 +863,16 @@
                     "IpProtocol": "6",
                     "FromPort": {"Ref":"DBPortNumber"},
                     "ToPort": {"Ref":"DBPortNumber"},
-                    "CidrIp": { "Ref": "PrivateSubnet1CIDR" }
+                    "CidrIp": { "Ref": "PrivateSubnet1CIDR" },
+                    "Description": "Access to database from Private Subnet 1"
                 },
                 {
                     "IpProtocol": "6",
                     "FromPort": {"Ref":"DBPortNumber"},
                     "ToPort": {"Ref":"DBPortNumber"},
-                    "CidrIp": { "Ref": "PrivateSubnet2CIDR" }
-                }                
+                    "CidrIp": { "Ref": "PrivateSubnet2CIDR" },
+                    "Description": "Access to database from Private Subnet 2"
+                },                
             ],            
             "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"}}, { "Key" : "Name", "Value" : "sg_database"}]
         },

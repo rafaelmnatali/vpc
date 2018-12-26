@@ -941,6 +941,13 @@
                     "CidrIp": { "Ref": "DBSubnet2CIDR" },
                     "Description": "Database access from DB Subnet 2"
                 },
+                {
+                    "IpProtocol": "6",
+                    "FromPort": "1024",
+                    "ToPort": "65535",
+                    "CidrIp": "0.0.0.0/0",
+                    "Description": "Allow access to ephemeral ports"
+                },
                 
             ],
             "SecurityGroupEgress": [
@@ -999,6 +1006,13 @@
                     "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet2CIDR" },
                     "Description": "Database access to DB Subnet 2"
+                },
+                {
+                    "IpProtocol": "6",
+                    "FromPort": "1024",
+                    "ToPort": "65535",
+                    "CidrIp": "0.0.0.0/0",
+                    "Description": "Allow access to ephemeral ports"
                 },    
             ],
             "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"}}, { "Key" : "Name", "Value" : "sg_linuxprivate"}]
@@ -1068,6 +1082,13 @@
                     "CidrIp": { "Ref": "DBSubnet2CIDR" },
                     "Description": "Database access from DB Subnet 2"
                 },
+                {
+                    "IpProtocol": "6",
+                    "FromPort": "1024",
+                    "ToPort": "65535",
+                    "CidrIp": "0.0.0.0/0",
+                    "Description": "Allow access to ephemeral ports"
+                },
                 
             ],
             "SecurityGroupEgress": [
@@ -1126,6 +1147,13 @@
                     "ToPort": {"Ref":"DBPortNumber"},
                     "CidrIp": { "Ref": "DBSubnet2CIDR" },
                     "Description": "Database access to DB Subnet 2"
+                },
+                {
+                    "IpProtocol": "6",
+                    "FromPort": "1024",
+                    "ToPort": "65535",
+                    "CidrIp": "0.0.0.0/0",
+                    "Description": "Allow access to ephemeral ports"
                 },    
             ],
             "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"}}, { "Key" : "Name", "Value" : "sg_windowsprivate"}]

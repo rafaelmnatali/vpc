@@ -154,6 +154,8 @@
       "Type": "AWS::EC2::VPC",
       "Properties": {
         "CidrBlock": { "Ref" : "VPCCIDR" },
+        "EnableDnsSupport" : "true",
+        "EnableDnsHostnames" : "true",
         "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"}}, { "Key" : "Name", "Value" : { "Ref" : "AWS::StackName"}}]
       }
     },
